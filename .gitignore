@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# market data is licensed and never committed; synthetic data is regenerated
+data/
+src/checkpoints/
+
+.DS_Store
+Thumbs.db
