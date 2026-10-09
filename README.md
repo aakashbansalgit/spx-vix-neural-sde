@@ -1,5 +1,10 @@
 # spx-vix-neural-sde
 
+[![tests](https://github.com/aakashbansalgit/spx-vix-neural-sde/actions/workflows/tests.yml/badge.svg)](https://github.com/aakashbansalgit/spx-vix-neural-sde/actions/workflows/tests.yml)
+
+Joint calibration of SPX options, VIX options and VIX futures with a neural SDE, including the bid-ask coverage metrics, dynamic loss weights and warm starts I built for a J.P. Morgan-sponsored practicum.
+
+![](figures/synthetic_run.png)
 Joint calibration of SPX options, VIX options and VIX futures with a neural stochastic differential equation, from my MSFE practicum at the University of Illinois, sponsored by J.P. Morgan Chase.
 
 The VIX is defined off SPX options, so the two markets have to agree, but a model calibrated to the SPX smile usually misprices the VIX smile and the VIX futures curve. The approach, from Guyon and Mustapha (2023), writes the log SPX price X and the VIX-squared factor Y as two coupled diffusions and lets a small neural network learn the volatility of X, the drift and volatility of Y, and their correlation as functions of (t, X, Y). Each epoch simulates the paths, prices SPX and VIX options by Monte Carlo, computes VIX from a regression of realised variance on the state, and backpropagates the implied volatility error through all of it.
